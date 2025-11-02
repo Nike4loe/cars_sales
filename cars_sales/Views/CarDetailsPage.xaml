@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cars_sales.Views.CarDetailsPage"
+             Title="Car Details">
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            
+            <!-- Car Image -->
+            <Frame BackgroundColor="#F5F5F5" HeightRequest="200" CornerRadius="10" Margin="0,0,0,20">
+                <Image Source="{Binding DisplayImage}"
+                       HeightRequest="200"
+                       Aspect="AspectFill"
+                       HorizontalOptions="Center"/>
+
+            </Frame>
+
+            <!-- Car Information -->
+            <StackLayout Spacing="15">
+                
+                <!-- Make and Model -->
+                <Label Text="{Binding Make}" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="Black"/>
+                
+                <Label Text="{Binding Model}" 
+                       FontSize="22" 
+                       TextColor="Gray"/>
+
+                <!-- Price -->
+                <Frame BackgroundColor="#4CAF50" 
+                       Padding="15" 
+                       CornerRadius="8" 
+                       Margin="0,10,0,0">
+                    <Label Text="{Binding Price, StringFormat='Price: ${0:N0}'}" 
+                           FontSize="20" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center"/>
+                </Frame>
+
+                <!-- Details Grid -->
+                <Grid Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Year -->
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Year:" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label Grid.Row="0" Grid.Column="1" 
+                           Text="{Binding Year}" 
+                           FontSize="16" 
+                           TextColor="Gray"/>
+
+                    <!-- Color -->
+                    <Label Grid.Row="1" Grid.Column="0" 
+                           Text="Color:" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label Grid.Row="1" Grid.Column="1" 
+                           Text="{Binding Color}" 
+                           FontSize="16" 
+                           TextColor="Gray"/>
+
+                    <!-- Status -->
+                    <Label Grid.Row="2" Grid.Column="0" 
+                           Text="Status:" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label Grid.Row="2" Grid.Column="1" 
+                           Text="Available" 
+                           FontSize="16" 
+                           TextColor="Green"/>
+                </Grid>
+
+                <!-- Description -->
+                <Label Text="Description" 
+                       FontSize="18" 
+                       FontAttributes="Bold" 
+                       TextColor="Black" 
+                       Margin="0,30,0,10"/>
+                
+                <Label Text="{Binding Description}" 
+                       FontSize="14" 
+                       TextColor="Gray" 
+                       LineBreakMode="WordWrap"/>
+
+                <!-- Additional Details -->
+                <Grid Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Mileage -->
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Mileage:" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label Grid.Row="0" Grid.Column="1" 
+                           Text="{Binding Mileage}" 
+                           FontSize="16" 
+                           TextColor="Gray"/>
+
+                    <!-- Fuel Type -->
+                    <Label Grid.Row="1" Grid.Column="0" 
+                           Text="Fuel Type:" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label Grid.Row="1" Grid.Column="1" 
+                           Text="{Binding FuelType}" 
+                           FontSize="16" 
+                           TextColor="Gray"/>
+
+                    <!-- Transmission -->
+                    <Label Grid.Row="2" Grid.Column="0" 
+                           Text="Transmission:" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label Grid.Row="2" Grid.Column="1" 
+                           Text="{Binding Transmission}" 
+                           FontSize="16" 
+                           TextColor="Gray"/>
+                </Grid>
+
+                <!-- Action Buttons -->
+                <StackLayout Orientation="Horizontal" 
+                             Spacing="10" 
+                             Margin="0,30,0,0">
+                    
+                    <Button Text="📞 Call Seller" 
+                            BackgroundColor="#2196F3" 
+                            TextColor="White" 
+                            Padding="20,15" 
+                            HorizontalOptions="FillAndExpand"/>
+                    
+                    <Button Text="✉️ Message" 
+                            BackgroundColor="#FF9800" 
+                            TextColor="White" 
+                            Padding="20,15" 
+                            HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

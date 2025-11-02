@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="Root"
+             x:Class="cars_sales.MainPage"
+             Title="Car Listings">
+
+    <!-- Toolbar -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="🚪 Logout"
+                 Order="Secondary"
+                 Priority="0"
+                 Clicked="OnLogoutClicked" />
+        <ToolbarItem x:Name="AddCarToolbarItem"
+                 Text="Add Car"
+                 Order="Primary"
+                 Priority="0"
+                 Clicked="OnAddCarClicked" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="16" Spacing="12">
+
+        <!-- Admin badge -->
+        <Frame x:Name="AdminBadge"
+           IsVisible="False"
+           BackgroundColor="#E3F2FD"
+           Padding="8"
+           CornerRadius="8">
+            <Label Text="Administrator Mode"
+             TextColor="#1976D2"
+             FontAttributes="Bold" />
+        </Frame>
+
+        <!-- Search -->
+        <SearchBar x:Name="CarSearchBar"
+               Placeholder="Search by make or model"
+               TextChanged="OnSearchTextChanged" />
+
+        <!-- Optional Add Car button (content area) - visible only for admins -->
+        <Button x:Name="AddCarButton"
+            Text="Add Car"
+            IsVisible="{Binding IsAdmin}"
+            Clicked="OnAddCarClicked" />
+
+        <!-- Car list -->
+        <CollectionView x:Name="CarsCollection"
+                    ItemsSource="{Binding FilteredCars}"
+                    SelectionMode="Single"
+                    SelectionChanged="OnCarTapped">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="0,6" CornerRadius="8" HasShadow="True">
+                        <Grid ColumnDefinitions="110,*,Auto"
+                  RowDefinitions="Auto,Auto,Auto"
+                  ColumnSpacing="10">
+
+                            <!-- Thumbnail -->
+                            <Image Grid.RowSpan="3"
+                     Source="{Binding DisplayImage}"
+                     HeightRequest="80"
+                     WidthRequest="110"
+                     Aspect="AspectFill" />
+
+                            <!-- Make & Model (or use separate Make/Model labels if you prefer) -->
+                            <Label Grid.Column="1"
+                     Text="{Binding MakeModel}"
+                     FontAttributes="Bold"
+                     FontSize="Medium" />
+
+                            <!-- Price -->
+                            <Label Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Price, StringFormat='${0:N0}'}"
+                     FontSize="Small"
+                     TextColor="#2e7d32" />
+
+                            <!-- Year + quick facts -->
+                            <StackLayout Grid.Row="2" Grid.Column="1"
+                           Orientation="Horizontal"
+                           Spacing="12">
+                                <Label Text="{Binding Year}"
+                       FontSize="Small"
+                       TextColor="Gray" />
+                                <!-- Optional extras if your model has them:
+                <Label Text="{Binding Mileage, StringFormat='{0:N0} km'}" FontSize="Small" TextColor="Gray"/>
+                <Label Text="{Binding Transmission}" FontSize="Small" TextColor="Gray"/>
+                -->
+                            </StackLayout>
+
+                            <!-- Admin-only buttons -->
+                            <StackLayout Grid.Column="2" Spacing="6" VerticalOptions="Center">
+                                <Button Text="EDIT"
+                        CommandParameter="{Binding .}"
+                        Clicked="OnEditCarClicked"
+                        IsVisible="{Binding Source={x:Reference Root}, Path=BindingContext.IsAdmin}" />
+                                <Button Text="DELETE"
+                        CommandParameter="{Binding .}"
+                        Clicked="OnDeleteCarClicked"
+                        IsVisible="{Binding Source={x:Reference Root}, Path=BindingContext.IsAdmin}" />
+                            </StackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cars_sales.Views.AddNewCarPage"
+             Title="Add New Car">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Label Text="Add New Car" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#2196F3"/>
+
+            <!-- Car Image Section -->
+            <Frame BackgroundColor="#F5F5F5" 
+                   HeightRequest="200" 
+                   CornerRadius="10" 
+                   Padding="0">
+                <StackLayout>
+                    <Image x:Name="CarImage" 
+                           Source="icon.png" 
+                           Aspect="AspectFit" 
+                           HeightRequest="150"/>
+                    <Button Text="📷 Add Photo" 
+                            BackgroundColor="#2196F3" 
+                            TextColor="White" 
+                            Margin="20,0" 
+                            Clicked="OnAddPhotoClicked"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Form Fields -->
+            <StackLayout Spacing="15">
+                
+                <!-- Make -->
+                <Entry x:Name="MakeEntry" 
+                       Placeholder="Make (e.g., Toyota, Honda)" 
+                       BackgroundColor="White" 
+                       TextColor="Black"/>
+
+                <!-- Model -->
+                <Entry x:Name="ModelEntry" 
+                       Placeholder="Model (e.g., Camry, Civic)" 
+                       BackgroundColor="White" 
+                       TextColor="Black"/>
+
+                <!-- Year -->
+                <Entry x:Name="YearEntry" 
+                       Placeholder="Year (e.g., 2022)" 
+                       BackgroundColor="White" 
+                       TextColor="Black" 
+                       Keyboard="Numeric"/>
+
+                <!-- Price -->
+                <Entry x:Name="PriceEntry" 
+                       Placeholder="Price (e.g., 25000)" 
+                       BackgroundColor="White" 
+                       TextColor="Black" 
+                       Keyboard="Numeric"/>
+
+                <!-- Color -->
+                <Entry x:Name="ColorEntry" 
+                       Placeholder="Color (e.g., Silver, Blue)" 
+                       BackgroundColor="White" 
+                       TextColor="Black"/>
+
+                <!-- Mileage -->
+                <Entry x:Name="MileageEntry" 
+                       Placeholder="Mileage (e.g., 15000 miles)" 
+                       BackgroundColor="White" 
+                       TextColor="Black"/>
+
+                <!-- Fuel Type -->
+                <Picker x:Name="FuelTypePicker" 
+                        Title="Select Fuel Type" 
+                        BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Gasoline</x:String>
+                        <x:String>Diesel</x:String>
+                        <x:String>Electric</x:String>
+                        <x:String>Hybrid</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!-- Transmission -->
+                <Picker x:Name="TransmissionPicker" 
+                        Title="Select Transmission" 
+                        BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Automatic</x:String>
+                        <x:String>Manual</x:String>
+                        <x:String>CVT</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!-- Description -->
+                <Editor x:Name="DescriptionEditor" 
+                        Placeholder="Description (optional)" 
+                        BackgroundColor="White" 
+                        TextColor="Black" 
+                        HeightRequest="100"/>
+
+            </StackLayout>
+
+            <!-- Action Buttons -->
+            <StackLayout Orientation="Horizontal" 
+                         Spacing="10" 
+                         Margin="0,20,0,0">
+                
+                <Button Text="Cancel" 
+                        BackgroundColor="LightGray" 
+                        TextColor="Black" 
+                        Padding="20,15" 
+                        HorizontalOptions="FillAndExpand" 
+                        Clicked="OnCancelClicked"/>
+                
+                <Button Text="Save Car" 
+                        BackgroundColor="#4CAF50" 
+                        TextColor="White" 
+                        Padding="20,15" 
+                        HorizontalOptions="FillAndExpand" 
+                        Clicked="OnSaveClicked"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

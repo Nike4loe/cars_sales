@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cars_sales.Views.LoginPage"
+             Title="Login">
+
+    <ScrollView>
+        <StackLayout Padding="30" Spacing="18" VerticalOptions="CenterAndExpand">
+
+            <!-- Header -->
+            <StackLayout Spacing="6" HorizontalOptions="Center">
+                <Label Text="🚗 Car Sales App"
+               FontSize="32"
+               FontAttributes="Bold"
+               TextColor="#2196F3"
+               HorizontalTextAlignment="Center" />
+                <Label Text="Sign in to continue"
+               FontSize="14"
+               TextColor="Gray"
+               HorizontalTextAlignment="Center" />
+            </StackLayout>
+
+            <!-- Username -->
+            <Entry x:Name="UsernameEntry"
+             Placeholder="Username"
+             ReturnType="Next"
+             Keyboard="Default" />
+
+            <!-- Password -->
+            <Entry x:Name="PasswordEntry"
+             Placeholder="Password"
+             IsPassword="True"
+             ReturnType="Done" />
+
+            <!-- Busy indicator (optional) -->
+            <ActivityIndicator x:Name="Busy"
+                         IsVisible="False"
+                         IsRunning="False" />
+
+            <!-- Login -->
+            <Button Text="Login"
+              BackgroundColor="#2196F3"
+              TextColor="White"
+              CornerRadius="8"
+              Clicked="OnLoginClicked" />
+
+            <!-- Demo hint -->
+            <Label Text="Demo: admin/admin123 • john/user123"
+             FontSize="12"
+             TextColor="Gray"
+             HorizontalOptions="Center" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
